@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Best Cars</title>
+</head>
+
+<body>
+
+    <header class="masthead clear">
+        <div class="centered">
+            <div class="site-branding">
+                <h1 class="site-title">Best Cars Vote</h1>
+            </div>
+        </div>
+    </header>
+    <div id="car-list">
+        <ul>
+            <li v-for="(item,index) in cars" :key="item.name" @click="carActual(index)">{{ item.name }}</li>
+        </ul>
+
+
+        <!-- Mostrar Noombre como titul -->
+        <h2 id="car-name">{{ cars[carActive].name }}</h2>
+
+        <!-- Mostrar pic -->
+        <div id="car">
+            <img id="car-img" v-bind:src="cars[carActive].imgSrc" alt="Click on car names " @click="contador()">
+        </div>
+
+        <div id="car-count">{{ cars[carActive].clickCount }}</div>
+
+        <button @click="admin=!admin">Admin</button>
+        <div v-show="admin">
+            <h3>Zona de Admin</h3>
+            <input type="text" v-model.trim="cars[carActive].name" placeholder="Nombre">
+            <input type="text" v-model="cars[carActive].image" placeholder="Enganxa el link">
+            <input type="text" v-model="cars[carActive].clickCount" placeholder="Modificando Count">
+        </div>
+
+
+
+
+        <script src=" script.js"></script>
+
+</body>
+
+</html>
